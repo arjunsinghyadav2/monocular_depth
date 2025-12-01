@@ -30,6 +30,40 @@ from Robot_Tools.Pick_Place_Tool import pick_and_place_block,schema_pick_and_pla
 
 from Robot_Tools.Camera_Capture_Tools import capture_scene_with_detection, schema_capture_scene_with_detection
 
+# NEW: Enhanced Detection
+from Robot_Tools.Enhanced_Detection import (
+    capture_scene_with_enhanced_detection,
+    schema_capture_scene_with_enhanced_detection,
+    parse_block_description,
+    schema_parse_block_description,
+)
+
+# NEW: Depth Estimation
+from Robot_Tools.Depth_Estimation import (
+    initialize_depth_model,
+    schema_initialize_depth_model,
+    estimate_depth_from_image,
+    schema_estimate_depth_from_image,
+    estimate_depth_with_detections,
+    schema_estimate_depth_with_detections,
+    calculate_relative_depth_offset,
+    schema_calculate_relative_depth_offset,
+)
+
+# NEW: Pick and Place with Rotation
+from Robot_Tools.Pick_Place_With_Rotation import (
+    pick_and_place_with_rotation,
+    schema_pick_and_place_with_rotation,
+)
+
+# NEW: Integrated Scene Understanding
+from Robot_Tools.Integrated_Scene_Understanding import (
+    initialize_scene_understanding_system,
+    schema_initialize_scene_understanding_system,
+    capture_and_analyze_complete_scene,
+    schema_capture_and_analyze_complete_scene,
+)
+
 # This is what you pass to Gemini as tools:
 available_functions = types.Tool(
     function_declarations=[
@@ -51,8 +85,20 @@ available_functions = types.Tool(
         schema_update_scene_memory,
         # CAMERA CAPTURE
         schema_capture_scene_with_detection,
+        schema_capture_scene_with_enhanced_detection,
         # PICK AND PLACE
-        schema_pick_and_place_block
+        schema_pick_and_place_block,
+        schema_pick_and_place_with_rotation,
+        # DEPTH ESTIMATION
+        schema_initialize_depth_model,
+        schema_estimate_depth_from_image,
+        schema_estimate_depth_with_detections,
+        schema_calculate_relative_depth_offset,
+        # INTEGRATED SCENE UNDERSTANDING
+        schema_initialize_scene_understanding_system,
+        schema_capture_and_analyze_complete_scene,
+        # PARSING
+        schema_parse_block_description,
     ]
 )
 
@@ -71,7 +117,7 @@ def call_function(function_call_part, verbose=False):
 
     # Map tool names (from FunctionDeclaration.name) to real Python functions
     function_map = {
-    # FILES 
+    # FILES
     "get_files_info": get_files_info,
     "get_file_content": get_file_content,
     "run_python_file": run_python_file,
@@ -89,8 +135,20 @@ def call_function(function_call_part, verbose=False):
     "update_scene_memory": update_scene_memory,
     # CAMERA CAPTURE
     "capture_scene_with_detection": capture_scene_with_detection,
+    "capture_scene_with_enhanced_detection": capture_scene_with_enhanced_detection,
     # PICK AND PLACE
-    "pick_and_place_block":pick_and_place_block
+    "pick_and_place_block": pick_and_place_block,
+    "pick_and_place_with_rotation": pick_and_place_with_rotation,
+    # DEPTH ESTIMATION
+    "initialize_depth_model": initialize_depth_model,
+    "estimate_depth_from_image": estimate_depth_from_image,
+    "estimate_depth_with_detections": estimate_depth_with_detections,
+    "calculate_relative_depth_offset": calculate_relative_depth_offset,
+    # INTEGRATED SCENE UNDERSTANDING
+    "initialize_scene_understanding_system": initialize_scene_understanding_system,
+    "capture_and_analyze_complete_scene": capture_and_analyze_complete_scene,
+    # PARSING
+    "parse_block_description": parse_block_description,
 }
     function_name = function_call_part.name
 

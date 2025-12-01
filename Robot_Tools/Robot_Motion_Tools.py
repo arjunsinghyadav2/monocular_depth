@@ -1,6 +1,6 @@
 # Robot_Tools/Robot_Motion_Tools.py
 
-from pydobot.dobot import MODE_PTP
+# from pydobot.dobot import MODE_PTP
 import pydobot
 import time
 import numpy as np
@@ -74,7 +74,7 @@ def move_to_home():
     try:
         dev = _ensure_device()
         print("Homing the robot...")
-        dev.home()
+        dev.move_to(x=240,y=0,z=150,r=0) 
         time.sleep(2)
         return "Robot homed"
     except Exception as e:
@@ -101,7 +101,7 @@ def move_to_specific_position(x: float, y: float, z: float, r: float = 0.0):
     try:
         dev = _ensure_device()
         dev.speed(50, 50)
-        dev.move_to(mode=int(MODE_PTP.MOVJ_XYZ), x=x, y=y, z=z, r=r)
+        dev.move_to(x=x, y=y, z=z, r=r)
         time.sleep(2)
         return f"Moved to position x={x}, y={y}, z={z}, r={r}"
     except Exception as e:
@@ -271,7 +271,7 @@ def move_robot_point_above(u: float, v: float, z_above: float = -30.0):
         print(f"Affine: pixel({u:.3f}, {v:.3f}) -> robot({Xa:.6f}, {Ya:.6f})")
 
         dev.speed(50, 50)
-        dev.move_to(mode=int(MODE_PTP.MOVJ_XYZ), x=Xa, y=Ya, z=z_above, r=0.0)
+        dev.move_to(x=Xa, y=Ya, z=z_above, r=0.0)
         time.sleep(1)
         return {
             "x": Xa,
@@ -326,7 +326,7 @@ def move_robot_point_block(u: float, v: float, block_height: float = -30.0):
         print(f"Affine: pixel({u:.3f}, {v:.3f}) -> robot({Xa:.6f}, {Ya:.6f})")
 
         dev.speed(50, 50)
-        dev.move_to(mode=int(MODE_PTP.MOVJ_XYZ), x=Xa, y=Ya, z=block_height, r=0.0)
+        dev.move_to(x=Xa, y=Ya, z=block_height, r=0.0)
         time.sleep(1)
         return {
             "x": Xa,

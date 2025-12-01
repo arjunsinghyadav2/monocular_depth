@@ -1,0 +1,66 @@
+[
+  {
+    "label": "small_blue1",
+    "x": 198,
+    "y": 305,
+    "size": "small",
+    "color": "blue",
+    "area": 1485,
+    "bbox": {
+      "x": 175,
+      "y": 281,
+      "w": 49,
+      "h": 51
+    },
+    "depth_raw": 12.6566801071167,
+    "depth_normalized": 0.9404031038284302
+  },
+  {
+    "label": "large_green1",
+    "x": 379,
+    "y": 309,
+    "size": "large",
+    "color": "green",
+    "area": 2537,
+    "bbox": {
+      "x": 353,
+      "y": 282,
+      "w": 55,
+      "h": 55
+    },
+    "depth_raw": 12.974712371826172,
+    "depth_normalized": 0.9718714952468872
+  },
+  {
+    "label": "small_yellow1",
+    "x": 446,
+    "y": 385,
+    "size": "small",
+    "color": "yellow",
+    "area": 1756,
+    "bbox": {
+      "x": 423,
+      "y": 358,
+      "w": 50,
+      "h": 55
+    },
+    "depth_raw": 13.033553123474121,
+    "depth_normalized": 0.9776936173439026
+  },
+  {
+    "label": "small_red1",
+    "x": 294,
+    "y": 390,
+    "size": "small",
+    "color": "red",
+    "area": 1450,
+    "bbox": {
+      "x": 276,
+      "y": 370,
+      "w": 39,
+      "h": 41
+    },
+    "depth_raw": 10.955913543701172,
+    "depth_normalized": 0.772117018699646
+  }
+]
