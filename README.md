@@ -2,7 +2,7 @@
 
 An advanced robotic control system that uses Large Language Models (LLMs) and Vision Language Models (VLMs) with monocular depth estimation for kinematically-aware pick-and-place operations.
 
-## 🌟 Features
+## Features
 
 - **Natural Language Control**: Control the robot using natural language commands
 - **Monocular Depth Estimation**: Uses MiDaS DPT-Large for 3D scene understanding
@@ -12,7 +12,7 @@ An advanced robotic control system that uses Large Language Models (LLMs) and Vi
 - **Kinematic Awareness**: Uses depth information for height-aware positioning
 - **Agentic AI Framework**: Powered by Google Gemini 2.5 Flash with function calling
 
-## 📋 Requirements
+## Requirements
 
 - Python 3.8+
 - Dobot Magician robotic arm
@@ -20,11 +20,11 @@ An advanced robotic control system that uses Large Language Models (LLMs) and Vi
 - CUDA-capable GPU (recommended for faster depth estimation)
 - Google Gemini API key
 
-## 🚀 Installation
+## Installation
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone <repo-url>
 cd monocular_depth
 ```
 
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 3. Create a `.env` file with your Gemini API key:
 ```bash
-GEMINI_API_KEY=your_api_key_here
+GEMINI_API_KEY=api_key_here
 ```
 
 4. Configure robot settings in `config.py`:
@@ -43,7 +43,7 @@ GEMINI_API_KEY=your_api_key_here
    - Adjust camera index if needed
    - Calibrate affine transformation matrix `M` for your setup
 
-## 🎮 Usage
+## Usage
 
 ### Basic Usage
 
@@ -64,7 +64,7 @@ python LLM_ROBOT.py "Pick up the small blue block and place it on the large red 
 python LLM_ROBOT.py "move home" --verbose
 ```
 
-## 📝 Example Commands
+## Example Commands
 
 The system supports various natural language commands:
 
@@ -93,7 +93,7 @@ The system supports various natural language commands:
    Pick a small yellow block and place it to the right of the red block.
    ```
 
-## 🏗️ System Architecture
+## System Architecture
 
 ### Core Modules
 
@@ -114,7 +114,7 @@ The system supports various natural language commands:
 
 - **file_handling.py**: File operations for the LLM
 
-## 🔧 Workflow
+## Workflow
 
 ### Standard Pick-and-Place Workflow
 
@@ -141,7 +141,7 @@ The system supports various natural language commands:
    - Applies rotation if specified
    - Reports completion
 
-## 🎯 Depth-Aware Positioning
+## Depth-Aware Positioning
 
 The system uses monocular depth estimation to:
 - Understand relative positions of objects in 3D
@@ -154,7 +154,7 @@ The system uses monocular depth estimation to:
 - Used to infer relative heights and positions
 - Helps avoid collisions and unreachable targets
 
-## 🎨 Object Detection
+## Object Detection
 
 ### Color Ranges (HSV)
 - **Blue**: [100, 120, 50] - [130, 255, 255]
@@ -167,14 +167,14 @@ The system uses monocular depth estimation to:
 - **Large blocks**: Area > 3000 pixels²
 - Intermediate sizes classified by bounding box dimensions
 
-## 🔄 Coordinate Transformations
+## Coordinate Transformations
 
 The system uses an affine transformation matrix `M` to convert:
 - **Pixel coordinates (u, v)** → **Robot coordinates (X, Y)**
 
 This matrix must be calibrated for your specific camera-robot setup.
 
-## 📊 Configuration Parameters
+## Configuration Parameters
 
 In `config.py`:
 ```python
@@ -186,7 +186,7 @@ stack_delta_mm = 10     # Extra clearance when stacking (mm)
 side_offset_mm = 10     # Gap when placing beside (mm)
 ```
 
-## 🛠️ Calibration
+## Calibration
 
 ### Camera-Robot Calibration
 
@@ -203,14 +203,14 @@ The depth estimation is relative and normalized:
 - Comparative depth between objects
 - Can be enhanced with ground truth measurements
 
-## 📁 Output Files
+## Output Files
 
 Generated in `captures/` directory:
 - `scene_complete.png`: Annotated scene image
 - `scene_complete.json`: Detection data with depth
 - `scene_depth.png`: Depth visualization with overlays
 
-## 🧪 Testing
+## Testing
 
 Test individual components:
 ```bash
@@ -224,7 +224,7 @@ python -c "from Robot_Tools.Depth_Estimation import *; print(initialize_depth_mo
 python -c "from Robot_Tools.Camera_Capture_Tools import *; capture_scene_with_detection()"
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Robot Not Connecting
 - Check USB port in `config.py` (default: `/dev/ttyACM2`)
@@ -246,7 +246,7 @@ python -c "from Robot_Tools.Camera_Capture_Tools import *; capture_scene_with_de
 - Modify `area_threshold` for your block sizes
 - Ensure good lighting and contrast with background
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Areas for improvement:
 - Multi-object manipulation sequences
@@ -255,21 +255,20 @@ Contributions are welcome! Areas for improvement:
 - Support for more object shapes
 - Voice command integration
 
-## 📄 License
+## License
 
 MIT License - see LICENSE file for details
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **MiDaS**: Intel ISL for monocular depth estimation
 - **Google Gemini**: For powerful LLM function calling
 - **PyDobot**: For Dobot robot control library
 - **OpenCV**: For computer vision capabilities
 
-## 📞 Contact
+## Contact
 
 For issues and questions, please open a GitHub issue.
-
 ---
 
-**Built with ❤️ for intelligent robotics**
+**Built with love for intelligent robotics**
