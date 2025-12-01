@@ -31,8 +31,8 @@ def classify_block_size(area, width, height):
         'small' or 'large'
     """
     # Calibrated thresholds - adjust based on your camera setup
-    SMALL_MAX_AREA = 2000   # Small blocks typically < 2000 pixels
-    LARGE_MIN_AREA = 3000   # Large blocks typically > 3000 pixels
+    SMALL_MAX_AREA = 2000   # Small blocks in lab < 2000 pixels
+    LARGE_MIN_AREA = 2100   # Large blocks heurestic > 3000 pixels
 
     if area < SMALL_MAX_AREA:
         return "small"
@@ -133,7 +133,7 @@ def detect_blocks_with_size(frame, area_threshold=500):
 
 
 def capture_scene_with_enhanced_detection(
-    cam_index=4,
+    cam_index=0,
     width: int = 640,
     height: int = 480,
     save_dir: str = "captures",
@@ -264,7 +264,7 @@ schema_capture_scene_with_enhanced_detection = types.FunctionDeclaration(
         properties={
             "cam_index": types.Schema(
                 type=types.Type.INTEGER,
-                description="Camera index (default 4).",
+                description="Camera index (default 0).",
             ),
             "width": types.Schema(
                 type=types.Type.INTEGER,

@@ -39,7 +39,7 @@ ls /dev/ttyACM*
 ls /dev/video*
 
 # Test camera at index 4
-python -c "import cv2; cap = cv2.VideoCapture(4); print('Camera OK' if cap.isOpened() else 'Camera FAILED')"
+python -c "import cv2; cap = cv2.VideoCapture(0); print('Camera OK' if cap.isOpened() else 'Camera FAILED')"
 ```
 
 ## Step 5: Run the System

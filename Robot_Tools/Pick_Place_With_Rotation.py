@@ -26,7 +26,7 @@ from Robot_Tools.Robot_Motion_Tools import (
     _ensure_device,
 )
 
-from pydobot.dobot import MODE_PTP
+# from pydobot.dobot import MODE_PTP
 import time
 
 
